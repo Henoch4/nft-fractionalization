@@ -44,3 +44,18 @@ body.suite-product button,body.suite-product a{cursor:pointer!important}
 .suite-layout-4 .suite-action{border:0;border-top:2px solid currentColor;border-radius:0;padding:24px 0}
 @media(max-width:600px){.suite-nav{padding:14px 16px;gap:10px}.suite-nav #suite-network{order:3;width:100%;font-size:13px}.suite-workspace{padding:36px 16px}.suite-layout-1 .suite-action{grid-template-columns:1fr}.suite-workspace .suite-values{grid-template-columns:1fr}.suite-values dd{margin-bottom:12px}}
 @media(prefers-reduced-motion:reduce){body.suite-product *,body.suite-product *::before,body.suite-product *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ==== layout variant: dock ==== */
+.su-dock .suite-nav{position:sticky;top:10px;z-index:60;margin:12px clamp(10px,3vw,28px) 0;padding:10px 18px;border:1px solid currentColor;border-radius:999px;background:inherit;box-shadow:0 12px 30px rgba(0,0,0,.10)}
+.su-dock .suite-brand{font-size:18px}
+.su-dock .suite-workspace{max-width:960px}
+.su-dock #suite-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.su-dock .suite-stat{border:1px solid currentColor;border-radius:999px;padding:12px 20px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.su-dock .suite-stat h3{margin:0;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.su-dock .suite-stat strong{font-size:18px;font-variant-numeric:tabular-nums}
+.su-dock #suite-action-grid{grid-template-columns:1fr 1fr;gap:18px}
+.su-dock .suite-action{border-radius:14px}
+.su-dock .suite-action:nth-child(even){margin-top:18px}
+.su-dock #suite-refresh{border-radius:999px}
+@media(max-width:700px){.su-dock #suite-action-grid{grid-template-columns:1fr}.su-dock .suite-action:nth-child(even){margin-top:0}}
+
