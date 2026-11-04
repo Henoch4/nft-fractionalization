@@ -4,7 +4,7 @@ Create a fractional NFT listing and buy shares at its recorded price.
 
 ## Mainnet status
 
-Mainnet deployment is pending. The interface does not simulate transactions or balances.
+Contract on BOT Chain mainnet (677): [0x4de941Ea1A2764c10c49dEd4377a00d29fa2A26E](https://scan.botchain.ai/address/0x4de941Ea1A2764c10c49dEd4377a00d29fa2A26E).
 
 Wallet actions require BOT Chain mainnet, deployed bytecode, and a connected compatible wallet. Every action is simulated before a transaction review; only a subsequent wallet confirmation can send it.
 
@@ -19,12 +19,16 @@ Wallet actions require BOT Chain mainnet, deployed bytecode, and a connected com
 
 ## Contract interface
 
-`frontend/product.json` uses the ABI compiled from the current Solidity source.
+`frontend/product.json` uses the current-source ABI, matched against the deployed mainnet runtime bytecode. Explorer source publication is tracked separately.
 
 | Action | Contract signature |
 |---|---|
 | Buy shares | `buyShares(uint256)` |
+| Cancel an unsold fraction | `cancelFraction(uint256)` |
+| Claim sale proceeds | `claimProceeds(uint256)` |
 | Fractionalize an NFT | `createFraction(address,uint256,uint256,uint256)` |
+| Redeem the NFT | `redeemNFT(uint256)` |
+| Transfer your shares | `transferShares(uint256,address,uint256)` |
 
 ## Run locally
 

@@ -1,9 +1,9 @@
 {
-  "abiSource": "pending-current-source",
+  "abiSource": "runtime-matched-current-source",
   "repo": "shard",
   "brand": "SHARD",
   "summary": "Create a fractional NFT listing and buy shares at its recorded price.",
-  "address": null,
+  "address": "0x4de941Ea1A2764c10c49dEd4377a00d29fa2A26E",
   "owner": null,
   "abi": [
     {
