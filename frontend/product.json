@@ -1,0 +1,545 @@
+{
+  "abiSource": "pending-current-source",
+  "repo": "shard",
+  "brand": "SHARD",
+  "summary": "Create a fractional NFT listing and buy shares at its recorded price.",
+  "address": null,
+  "owner": null,
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "fid",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "refunded",
+          "type": "uint256"
+        }
+      ],
+      "name": "DustRefunded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "fid",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "nftContract",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "totalShares",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "pricePerShare",
+          "type": "uint256"
+        }
+      ],
+      "name": "FractionCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "fid",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "ProceedsClaimed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "fid",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "shares",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "paid",
+          "type": "uint256"
+        }
+      ],
+      "name": "SharesBought",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "fid",
+          "type": "uint256"
+        }
+      ],
+      "name": "buyShares",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "fid",
+          "type": "uint256"
+        }
+      ],
+      "name": "cancelFraction",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "fid",
+          "type": "uint256"
+        }
+      ],
+      "name": "claimProceeds",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "nftContract",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totalShares",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "pricePerShare",
+          "type": "uint256"
+        }
+      ],
+      "name": "createFraction",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "fractionCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "fractions",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "nftContract",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totalShares",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sharesSold",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "pricePerShare",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "active",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "claimed",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "fid",
+          "type": "uint256"
+        }
+      ],
+      "name": "getFraction",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "nftContract",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totalShares",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sharesSold",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "pricePerShare",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "active",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "fid",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getShares",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerFractions",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "proceedsClaimed",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "fid",
+          "type": "uint256"
+        }
+      ],
+      "name": "redeemNFT",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "shares",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "fid",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferShares",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "writes": [
+    {
+      "name": "buyShares",
+      "signature": "buyShares(uint256)",
+      "title": "Buy shares",
+      "admin": false,
+      "actor": null
+    },
+    {
+      "name": "cancelFraction",
+      "signature": "cancelFraction(uint256)",
+      "title": "Cancel an unsold fraction",
+      "admin": false,
+      "rule": [
+        "getFraction",
+        [
+          "owner"
+        ]
+      ],
+      "actor": null
+    },
+    {
+      "name": "claimProceeds",
+      "signature": "claimProceeds(uint256)",
+      "title": "Claim sale proceeds",
+      "admin": false,
+      "rule": [
+        "getFraction",
+        [
+          "owner"
+        ]
+      ],
+      "actor": null
+    },
+    {
+      "name": "createFraction",
+      "signature": "createFraction(address,uint256,uint256,uint256)",
+      "title": "Fractionalize an NFT",
+      "admin": false,
+      "actor": null
+    },
+    {
+      "name": "redeemNFT",
+      "signature": "redeemNFT(uint256)",
+      "title": "Redeem the NFT",
+      "admin": false,
+      "actor": null
+    },
+    {
+      "name": "transferShares",
+      "signature": "transferShares(uint256,address,uint256)",
+      "title": "Transfer your shares",
+      "admin": false,
+      "actor": null
+    }
+  ],
+  "money": [
+    "createFraction.pricePerShare"
+  ],
+  "idBase": 0,
+  "layout": 4,
+  "legacy": null,
+  "readOnlyReason": null
+}
